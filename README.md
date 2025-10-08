@@ -37,35 +37,63 @@ Diff = A ⊕ B ⊕ Bin
 Borrow out = A'Bin + A'B + BBin
 
 **Truthtable**
-<img width="1161" height="659" alt="image" src="https://github.com/user-attachments/assets/1d4a5dbe-3d08-44d4-9f0f-0a77ed1ec742" />
-<img width="1124" height="646" alt="image" src="https://github.com/user-attachments/assets/7ad43ec8-1036-49bc-ae4e-b705fc04c70d" />
+
+full adder
+
+![Screenshot 2025-04-22 210616](https://github.com/user-attachments/assets/cb470266-ed7a-41ba-82f9-731c291e687b)
+
+full subtractor
+
+![Screenshot 2025-04-22 210628](https://github.com/user-attachments/assets/dc341a31-2a58-4b56-9cb1-ee62d0a9a300)
 
 **Procedure**
 
+Full Adder: Open Quartus II and create a new project. Use schematic design entry to draw the full adder circuit. The circuit consists of XOR, AND, and OR gates. Compile the design, verify its functionality through simulation. Implement the design on the target device and program it.
 
-```
-Write the detailed procedure here
+Full Subtractor: Follow the same steps as for the full adder. Draw the full subtractor circuit using schematic design. The circuit includes XOR, AND, OR gates to perform subtraction. Compile, simulate, implement, and program the design similarly to the full adder.
 
 **Program:**
-```module fulladder(a,b,cin,sum,carry);
-input a,b,cin;
-output sum,carry;
-assign sum=( (a ^ b)^cin);
-assign carry= ( (a & b)| ( cin &(a ^ b )));
+```
+//expt4a-full adder
+module ex4a(sum, cout, a, b, cin);
+    output sum;
+    output cout;
+    input a;
+    input b;
+    input cin;
+
+	 wire w1,w2,w3;
+	 assign w1=a^b;
+	 assign w2=a&b;
+	 assign w3=w1&cin;
+	 assign sum=w1^cin;
+	 assign cout=w2|w3;
 endmodule
 
-```
-```
-module fullsubtractor(a,b,bin,difference,borrow);
-input a,b,bin;
-output difference,borrow;
-assign difference= ( (a ^ b)^bin);
-assign borrow= ( ( ~a & b)| ( bin & (~(a ^ b ))));
+
+//exp-4b-full subtractor
+module ex4b(df, bo, a, b, bin);
+    output df;
+    output bo;
+    input a;
+    input b;
+    input bin;
+	wire w1,w2,w3;
+	 assign w1=a^b;
+	 assign w2=(~a&b);
+	 assign w3=(~w1&bin);
+	 assign df=w1^bin;
+	 assign bo=w2|w3;
+
 endmodule
-/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+```
+/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
+Developed by: Yaazhini.S
+RegisterNumber:212224230308
 */
 
 **RTL Schematic**
+
 full adder
 
 ![Screenshot 2025-04-22 210003](https://github.com/user-attachments/assets/746f29ad-ebf7-4979-8727-e7048774e797)
@@ -83,7 +111,6 @@ full adder
 full subtractor
 
 ![Screenshot 2025-04-22 210103](https://github.com/user-attachments/assets/ad9beebc-c915-4ff9-aeaf-78a234b67815)
-
 
 **Result:**
 
