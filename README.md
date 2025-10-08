@@ -88,8 +88,8 @@ module ex4b(df, bo, a, b, bin);
 endmodule
 ```
 /* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
-Developed by: Yaazhini.S
-RegisterNumber:212224230308
+Developed by: Srinithi.S
+RegisterNumber:25018743
 */
 
 **RTL Schematic**
